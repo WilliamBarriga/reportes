@@ -1,0 +1,42 @@
+regions = [
+    {'id': 0, 'option': 'Total Nacional', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 1, 'option': 'Alto Patía - Norte del Cauca', 'img': '<img src="https://colaboracion.dnp.gov.co/CDT/PublishingImages/Pactos%20Territoriales/Contrato%20Plan%20Cauca.png" alt="imagen Norte del cauca">'},
+    {'id': 2, 'option': 'Arauca', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 3, 'option': 'Bajo Cauca y Nordeste Antioqueño', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 4, 'option': 'Catatumbo', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 5, 'option': 'Chocó', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 6, 'option': 'Cuenca del Caguán y Piedemonte Caqueteño', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 7, 'option': 'Macarena - Guaviare', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 8, 'option': 'Montes de María', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 9, 'option': 'Pacífico Medio', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 10, 'option': 'Pacífico y Frontera Nariñense', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 11, 'option': 'Putumayo', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 12, 'option': 'Sierra Nevada -Perijá', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 13, 'option': 'Sur de Bolívar', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 14, 'option': 'Sur de Córdoba', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 15, 'option': 'Sur del Tolima', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 16, 'option': 'Urabá Antioqueño', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'}
+]
+
+departments = [
+    {'id': '0', 'option': 'Total Nacional', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '1', 'option': 'ANTIOQUIA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '2', 'option': 'ARAUCA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '3', 'option': 'BOLIVAR', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '4', 'option': 'CAQUETA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '5', 'option': 'CAUCA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '6', 'option': 'CESAR', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '7', 'option': 'CHOCO', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '8', 'option': 'CORDOBA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '9', 'option': 'GUAVIARE', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '10', 'option': 'HUILA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '11', 'option': 'LA GUAJIRA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '12', 'option': 'MAGDALENA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '13', 'option': 'META', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '14', 'option': 'NARIÑO', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '15', 'option': 'NORTE DE SANTANDER', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '16', 'option': 'PUTUMAYO', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '17', 'option': 'SUCRE', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '18', 'option': 'TOLIMA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '19', 'option': 'VALLE DEL CAUCA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'}
+]

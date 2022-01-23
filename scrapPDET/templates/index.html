@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="{{ url_for('static', path='/main.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <title>Presidencia</title>
+</head>
+
+<body>
+    <div class="container-fluid pl-4 pb-3 pt-3 bg-dark text-muted text-center">
+            <h2>Equipo de Gestión de
+                Conocimiento de la Consejería Presidencial para la Estabilización y la Consolidación</h2>
+    </div>
+    <div class="container">
+        <h2>Generar Reporte Victimas</h2>
+        <div class="row">
+            <div class="col-4 pl-1">
+                <h3>Region</h3>
+                <div class="form-group pl-2">
+                    <label for="RegionPDET">SubregionPDET:</label>
+                    <select class="form-control" id="RegionPDET">
+                        <option value=0>Total Nacional</option>
+                        <option value=1> Alto Patía - Norte del Cauca</option>
+                        <option value=2> Arauca</option>
+                        <option value=3> Bajo Cauca y Nordeste Antioqueño</option>
+                        <option value=4> Catatumbo</option>
+                        <option value=5> Chocó</option>
+                        <option value=6> Cuenca del Caguán y Piedemonte Caqueteño</option>
+                        <option value=7> Macarena - Guaviare</option>
+                        <option value=8> Montes de María</option>
+                        <option value=9> Pacífico Medio</option>
+                        <option value=10> Pacífico y Frontera Nariñense</option>
+                        <option value=11> Putumayo</option>
+                        <option value=12> Sierra Nevada -Perijá</option>
+                        <option value=13> Sur de Bolívar</option>
+                        <option value=14> Sur de Córdoba</option>
+                        <option value=15> Sur del Tolima</option>
+                        <option value=16> Urabá Antioqueño</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-3" onclick="scrapRegion()">Submit</button>
+                </div>
+                <h3>Departamento</h3>
+                <div class="form-group pl-2">
+                    <label for="Departamento">Selecciona el departamento</label>
+                    <select class="form-control" id="Departamento">
+                        <option value="0">Total Nacional</option>
+                        <option value="1" >ANTIOQUIA</option>
+                        <option value="2">ARAUCA</option>
+                        <option value="3">BOLIVAR</option>
+                        <option value="4">CAQUETA</option>
+                        <option value="5">CAUCA</option>
+                        <option value="6">CESAR</option>
+                        <option value="7">CHOCO</option>
+                        <option value="8">CORDOBA</option>
+                        <option value="9">GUAVIARE</option>
+                        <option value="10">HUILA</option>
+                        <option value="11">LA GUAJIRA</option>
+                        <option value="12">MAGDALENA</option>
+                        <option value="13">META</option>
+                        <option value="14">NARIÑO</option>
+                        <option value="15">NORTE DE SANTANDER</option>
+                        <option value="16">PUTUMAYO</option>
+                        <option value="17">SUCRE</option>
+                        <option value="18">TOLIMA</option>
+                        <option value="19">VALLE DEL CAUCA</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-3" onclick="scrapDeparment()">Submit</button>
+                </div>
+            </div>
+            <div class="col-8">
+                <div>
+                    <img height="500" src="https://i2.wp.com/betelsas.com/wp-content/uploads/2017/05/Mapa-de-Colombia-vector.png?fit=751%2C1024&ssl=1" alt="Mapa Colombia">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loading">
+    </div>
+    <footer class="mt-3 pb-2 pt-3 bg-dark text-muted row">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 col-md">
+                    <a href="#">Home</a>
+                </div>
+                <div class="col-12 col-md">
+                    <a href="https://github.com/WilliamBarriga" target="_blank">GitHub</a>
+                </div>
+                <div class="col-12 col-md">
+                    <a href="https://www.linkedin.com/in/williambarriga/" target="_blank">LinkedIn</a>
+                </div>
+                <div class="col-12 col-md">
+                    <a href="https://platzi.com/p/william-barriga/" target="_blank">Platzi</a>
+                </div>
+            </div>
+            <div class="text-center mt-1">
+                William Barriga - 2021
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<html>
