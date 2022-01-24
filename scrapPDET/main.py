@@ -27,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post(path='/api/scrap-pdet', response_class=FileResponse)
+@app.post(path='/api/scrap-region', response_class=FileResponse)
 async def scrap_pdet(data: Scrap, back: BackgroundTasks):
     region = data.region
     info = None
@@ -48,7 +48,7 @@ async def scrap_department(data: Scrap, back: BackgroundTasks):
     back.add_task(remove_file, file)
     return file
 
-
+import time
 @app.get(path='/api/get/{data}')
 async def get_regions(data: str):
     if data == 'regions':

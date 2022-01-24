@@ -1,7 +1,7 @@
 regions = [
     {'id': 0, 'option': 'Total Nacional', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
     {'id': 1, 'option': 'Alto Patía - Norte del Cauca', 'img': '<img src="https://colaboracion.dnp.gov.co/CDT/PublishingImages/Pactos%20Territoriales/Contrato%20Plan%20Cauca.png" alt="imagen Norte del cauca">'},
-    {'id': 2, 'option': 'Arauca', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': 2, 'option': 'Arauca', 'img': '<img src="https://comisiondelaverdad.co/especiales/verdadconsentido/img/mapa_arauca.png" alt="imagen colombia">'},
     {'id': 3, 'option': 'Bajo Cauca y Nordeste Antioqueño', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
     {'id': 4, 'option': 'Catatumbo', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
     {'id': 5, 'option': 'Chocó', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
@@ -20,8 +20,8 @@ regions = [
 
 departments = [
     {'id': '0', 'option': 'Total Nacional', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
-    {'id': '1', 'option': 'ANTIOQUIA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
-    {'id': '2', 'option': 'ARAUCA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
+    {'id': '1', 'option': 'ANTIOQUIA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png'},
+    {'id': '2', 'option': 'ARAUCA', 'img': '<img src="https://comisiondelaverdad.co/especiales/verdadconsentido/img/mapa_arauca.png" alt="imagen colombia">'},
     {'id': '3', 'option': 'BOLIVAR', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
     {'id': '4', 'option': 'CAQUETA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
     {'id': '5', 'option': 'CAUCA', 'img': '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/135px-Flag_of_Colombia.svg.png" alt="imagen colombia">'},
