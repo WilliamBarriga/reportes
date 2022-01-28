@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import Select
 from scraps.utils import create_driver_scrap, remove_old_years, remove_chars
 
 
-async def scrapPDET(region: int = 0):
+def scrapPDET(region: int = 0):
     logging.basicConfig(
             format='%(asctime)s:%(levelname)s:%(message)s',
             level=logging.INFO,

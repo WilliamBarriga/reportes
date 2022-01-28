@@ -6,7 +6,7 @@ from docx.enum.style import WD_STYLE_TYPE
 
 
 
-async def write_document(info: dict):
+def write_document(info: dict):
     regionPDET= info['regionPDET']
     num_victimas= info['num_victimas']
     porcentaje_poblacion= info['porcentaje_poblacion']

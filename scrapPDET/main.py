@@ -28,29 +28,29 @@ app.add_middleware(
 )
 
 @app.post(path='/api/scrap-region', response_class=FileResponse)
-async def scrap_pdet(data: Scrap, back: BackgroundTasks):
+def scrap_pdet(data: Scrap, back: BackgroundTasks):
     region = data.region
     info = None
     while info == None:
-        info = await scrapPDET(region)
-    file = await write_document(info)
+        info = scrapPDET(region)
+    file = write_document(info)
     back.add_task(remove_file, file)
     return file
 
 
 @app.post(path='/api/scrap-department',response_class=FileResponse)
-async def scrap_department(data: Scrap, back: BackgroundTasks):
+def scrap_department(data: Scrap, back: BackgroundTasks):
     department = data.region
     info = None
     while info == None:
-        info = await scrapDepartment(department)
-    file = await write_document(info)
+        info = scrapDepartment(department)
+    file = write_document(info)
     back.add_task(remove_file, file)
     return file
 
 import time
 @app.get(path='/api/get/{data}')
-async def get_regions(data: str):
+def get_regions(data: str):
     if data == 'regions':
         return {'data': regions}
     elif data == 'departments':
