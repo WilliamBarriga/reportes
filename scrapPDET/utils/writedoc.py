@@ -1,12 +1,11 @@
 import docx
 from docx.shared import Pt 
 from docx.enum.style import WD_STYLE_TYPE
-
-
-
-
+from uuid import uuid4
+import logging
 
 def write_document(info: dict):
+    logging.info('writing victims document')
     regionPDET= info['regionPDET']
     num_victimas= info['num_victimas']
     porcentaje_poblacion= info['porcentaje_poblacion']
@@ -93,8 +92,9 @@ def write_document(info: dict):
     retornos = paragraphs[30]
     retornos.text = retornos.text.replace('planes_reub_apro', f'{planes_reub_apro}')
     retornos.text = retornos.text.replace('planes_reub_for', f'{planes_reub_for}')
+    logging.info('document writend')
     
-    dir_save= f'files/{regionPDET}.docx'
+    dir_save= f'files/{regionPDET}_{uuid4()}.docx'
     doc.save(dir_save)
-    
+    logging.info(f'document save in {dir_save}')
     return dir_save

@@ -4,8 +4,8 @@ module.exports = {
     script: 'uvicorn main:app --reload --host 0.0.0.0',
     cwd: './scrapPDET/'
   }, {
-    name: 'Vue.js',
+    name: 'Vue.ts',
     script: 'yarn serve',
-    cwd: './basic-test/'
+    cwd: './webapp/'
   }],
 };
