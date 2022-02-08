@@ -12,11 +12,18 @@ from utils.writedoc import write_document
 from utils.utils import remove_file
 
 from info import regions, departments
+from dri_work.main import start_dri
 import json
 
 
 class Scrap(BaseModel):
     region: int
+
+
+class Dri(BaseModel):
+    type_report: int
+    name_place: str or int
+
 
 app = FastAPI()
 app.add_middleware(
@@ -48,7 +55,7 @@ def scrap_department(data: Scrap, back: BackgroundTasks):
     back.add_task(remove_file, file)
     return file
 
-import time
+
 @app.get(path='/api/get/{data}')
 def get_regions(data: str):
     if data == 'regions':
@@ -57,3 +64,12 @@ def get_regions(data: str):
         return {'data': departments}
     else:
         return Response(f'the info {data} is not defined', status_code=404)
+    
+
+@app.post(path='/api/dri-report', response_class=FileResponse)
+def dri_report(data: Dri, back: BackgroundTasks):
+    type_report = data.type_report
+    name_place = data.name_place
+    file = start_dri(type_report, name_place)
+    back.add_task(remove_file, file)
+    return file

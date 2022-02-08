@@ -35,7 +35,7 @@ def write_document(info: dict):
     planes_reub_apro= info['planes_reub_apro']
     planes_reub_for= info['planes_reub_for']
     
-    doc = docx.Document('./Víctimas.docx')
+    doc = docx.Document('./base_docx/Víctimas.docx')
     style = doc.styles['Normal']
     font = style.font
     font.name = 'Arial Narrow'

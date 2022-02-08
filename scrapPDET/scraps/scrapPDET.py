@@ -16,10 +16,11 @@ def scrapPDET(region: int = 0):
             handlers=[
                 logging.StreamHandler(sys.stdout)
             ])
+    url = 'http://fichaestrategica.unidadvictimas.gov.co/BoletinPDET/IndexPDET'
     try:
         logging.info('starting process')
         info_doc = {}
-        driver = create_driver_scrap()
+        driver = create_driver_scrap(url)
         original_window = driver.current_window_handle
         logging.info('driver cargado')
         driver.implicitly_wait(5)

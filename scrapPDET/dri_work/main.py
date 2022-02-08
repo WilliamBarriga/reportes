@@ -1,27 +1,25 @@
+import logging
+import os
+import sys
 import pandas as pd
 from pyxlsb import open_workbook
+from .write_doc import write_doc_dri
+from fDB.DRI_info import dri_types, dri_info
 
-def _regions_name(name_place):
-    regions = {
-        10: 'Putumayo'
-    }
+cwd = os.getcwd()
+base_file = f'{cwd}/dri_work/Logros MADR_20_12_2021.xlsb'
 
-    return regions[name_place]
 
-def read_form_tierras(type_report, name_place) -> dict:
+def read_form_tierras(info_doc, type_report, name_place) -> dict:
     info_doc = {}
-    #index_columns: ['Departamento', 'Municipio', 'Subregión PDET', 'Región']
     index_columns= [1, 2, 13, 14]
     index_col = index_columns[type_report]
     
-    df = pd.read_excel('./Logros MADR_20_12_2021.xlsb', engine='pyxlsb', sheet_name="Formalización de tierras ANT", skiprows=6, index_col=index_col)
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name="Formalización de tierras ANT", skiprows=6, index_col=index_col)
     
     #subregion PDET: int / otros: str 
     df = df.xs(name_place)
-    if type(name_place) == int:
-        name_place = _regions_name(name_place)
     
-    info_doc['Name_place'] = name_place
     info_doc['Titulos_Expedidos'] = df.loc[:, 'Títulos formalizados'].sum()
     info_doc['Hectareas_for'] = round(df.loc[:, 'Área formalizada en hectáreas'].sum())
     info_doc['Familias_for'] = df.loc[:, 'Familias beneficiadas'].sum()
@@ -34,15 +32,7 @@ def read_form_tierras(type_report, name_place) -> dict:
 def read_URT(info_doc, type_report, name_place) -> dict:
     index_columns= [1, 2, 12, 13]
     index_col = index_columns[type_report]
-    df = pd.read_excel('./Logros MADR_20_12_2021.xlsb', engine='pyxlsb', sheet_name="URT", skiprows=6, index_col=index_col)
-    
-    
-    print('----------')
-    print(df.head(2))
-    for col in df.columns.values:
-        print(col)
-    print('----------')
-    
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name="URT", skiprows=6, index_col=index_col)
     
     df = df.xs(name_place)
     
@@ -57,20 +47,117 @@ def read_URT(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
+def read_vivienda(info_doc, type_report, name_place) -> dict:
+    index_columns = [1,2,11,12]
+    index_col = index_columns[type_report]
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Vivienda', skiprows=6, index_col=index_col)
+    
+    df = df.xs(name_place)
+    
+    info_doc['Vivienda_Total'] = df.loc[:, 'Total soluciones de vivienda (otorgamientos periodo de gobierno)'].sum()
+    info_doc['Vivienda_nueva'] = df.loc[:, 'Viviendas nuevas (otorgamientos periodo de gobierno)'].sum()
+    info_doc['Vivienda_mejorada'] = df.loc[:, 'Viviendas mejoradas (otorgamientos periodo de gobierno)'].sum()
+    info_doc['Vivienda_subsidio_total'] = round(df.loc[:, 'Valor total total de subsidios entregados ($)'].sum())
+    info_doc['Vivienda_subsidio_nueva'] = round(df.loc[:, 'Valor subsidios vivienda nuevas ($)'].sum())
+    info_doc['Vivienda_subsidio_mejorada'] = round(df.loc[:, 'Valor subsidios mejoramiento ($)'].sum())
+    return info_doc
 
-if __name__ == '__main__':
-    ############################## Remove at finish
-    #print('----------')
-    #print(df.head(2))
-    #for col in df.columns.values:
-    #    print(col)
-    #print('----------')
-    ################################
-    params = (2, 10)
-    info_doc = read_form_tierras(*params)
-    info_doc = read_URT(info_doc, *params)
-    info_doc = 
+
+def read_alianzas_productivas(info_doc, type_report, name_place) -> dict:
+    index_columns = [1,2,18,19]
+    index_col = index_columns[type_report]
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Alianzas productivas', skiprows=6, index_col=index_col)
     
-    print('**************')
-    print(info_doc)
+    df = df.xs(name_place)
+    info_doc['alipro_nproyectos'] = df.loc[:, 'No. de proyectos (Alianzas)'].sum()
+    info_doc['alipro_nbeneficiarios'] = df.loc[:, 'No. de beneficiarios'].sum()
+    info_doc['alipro_npresupuesto'] = round(df.loc[:, 'Valor de ejecución presupuestal ($)'].sum())
     
+    return info_doc
+
+
+def read_coseche_y_venda(info_doc, type_report, name_place) -> dict:
+    index_columns = [1,2,6,7]
+    index_col = index_columns[type_report]
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Coseche y venda a la fija', skiprows=6, index_col=index_col)
+    
+    df = df.xs(name_place)
+    info_doc['coseche_venda_productores'] = df.loc[:, 'Productores con acuerdos comerciales'].sum()
+    info_doc['coseche_venda_inversion'] = round(df.loc[:, 'Valor estimado acuerdos comerciales ($)'].sum())
+    
+    return info_doc
+
+
+def read_financiamiento(info_doc, type_report, name_place) -> dict:
+    index_columns = [1,2,93,94]
+    index_col = index_columns[type_report]
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Financiamiento', skiprows=6, index_col=index_col)
+
+    df = df.xs(name_place)
+    info_doc['Finagro_creditos'] = df.loc[:, 'Número de operaciones de Crédito de Fomento Agropecuario'].sum()
+    info_doc['Finagro_dinero'] = round(df.loc[:, 'Valor del Crédito de Fomento Agropecuario ($)'].sum())
+    info_doc['LEC_operaciones'] = df.loc[:, 'Número de operaciones - LEC'].sum()
+    info_doc['LEC_creditos'] = round(df.loc[:, 'Valor crédito ($) - LEC'].sum())
+    info_doc['LEC_subsidiones'] = round(df.loc[:, 'Valor subsidio ($) - LEC'].sum())
+
+    return info_doc
+
+
+def read_campo(info_doc, type_report, name_place) -> dict:
+    index_columns = [1,2,14,15]
+    index_col = index_columns[type_report]
+    df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Construyendo capacidades', skiprows=6, index_col=index_col)
+    
+    df = df.xs(name_place)
+    info_doc['campo_proyectos'] = df.loc[:, 'Proyectos productivos'].sum()
+    info_doc['campo_familias'] = df.loc[:, 'Familias beneficiarias de generación de capacidades "El Campo Emprende"'].sum()
+    info_doc['campo_dinero'] = round(df.loc[:, 'Recursos de generación de capacidades "El Campo Emprende"  ($)'].sum())
+    
+    return info_doc
+
+
+def fix_nums(json_nums) -> dict:
+    for k, v in json_nums.items():
+        try:
+            v = '{:,}'.format(v).replace(',', '.')
+            json_nums[k] = v
+        
+        except:
+            logging.info(f'error converting number: {v} key: {k}')
+        
+    return json_nums
+
+
+
+def start_dri(type_report, name_place):
+    logging.basicConfig(
+            format='%(asctime)s:%(levelname)s:%(message)s',
+            level=logging.INFO,
+            handlers=[
+                logging.StreamHandler(sys.stdout)
+            ])
+    typeR = dri_types[type_report]
+    name_place = int(name_place)
+    name = dri_info[typeR]
+    name = name[name_place]
+    
+    info_doc = {}
+    
+    #index_columns: ['Departamento', 'Municipio', 'Subregión PDET', 'Región']
+    info_doc = read_form_tierras(info_doc, type_report, name_place)
+    info_doc = read_URT(info_doc, type_report, name_place)
+    info_doc = read_vivienda(info_doc, type_report, name_place)
+    info_doc = read_alianzas_productivas(info_doc, type_report, name_place)
+    info_doc = read_coseche_y_venda(info_doc, type_report, name_place)
+    info_doc = read_financiamiento(info_doc, type_report, name_place)
+    info_doc = read_campo(info_doc, type_report, name_place)
+    logging.info('**************')
+    info_doc = fix_nums(info_doc)
+    
+    info_doc['Report_type'] = typeR
+    info_doc['Name_Place'] = name
+    
+    logging.info(info_doc)
+
+    file = write_doc_dri(info_doc)
+    return file

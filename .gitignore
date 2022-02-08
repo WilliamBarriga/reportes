@@ -24,3 +24,5 @@ pnpm-debug.log*
 
 __pycache__/
 *.docx
+*.xlsb
+*.xlsx

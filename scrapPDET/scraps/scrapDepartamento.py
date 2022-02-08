@@ -20,11 +20,11 @@ def scrapDepartment(region: int = 0):
             handlers=[
                 logging.StreamHandler(sys.stdout)
             ])
-    
+    url = 'http://fichaestrategica.unidadvictimas.gov.co/'
     try:
         logging.info('starting process')
         info_doc = {}
-        driver = create_driver_scrap()
+        driver = create_driver_scrap(url)
         original_window = driver.current_window_handle
         logging.info('driver cargado')
         logging.info('seleccionando departamento')
@@ -43,7 +43,7 @@ def scrapDepartment(region: int = 0):
         boton_consulta = driver.find_element(By.ID, 'btnCons')
         boton_consulta.click()
         logging.info('consultando')
-        boletin = driver.find_element(By.XPATH, f'/html/body/div/div[3]/form/div/div/div[2]/div/div[2]/div[1]/div/div[1]/a')
+        boletin = driver.find_element(By.XPATH, f'/html/body/div[3]/form/div[2]/div/div[2]/div[1]/div/div[1]/a')
         boletin.click()
         logging.info('click boletin')
         driver.implicitly_wait(5)
