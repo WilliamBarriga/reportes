@@ -10,7 +10,7 @@ cwd = os.getcwd()
 base_file = f'{cwd}/dri_work/Logros MADR_20_12_2021.xlsb'
 
 
-def read_form_tierras(info_doc, type_report, name_place) -> dict:
+def read_form_tierras(info_doc, type_report, name_place, file) -> dict:
     info_doc = {}
     index_columns= [1, 2, 13, 14]
     index_col = index_columns[type_report]
@@ -29,7 +29,7 @@ def read_form_tierras(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
-def read_URT(info_doc, type_report, name_place) -> dict:
+def read_URT(info_doc, type_report, name_place, file) -> dict:
     index_columns= [1, 2, 12, 13]
     index_col = index_columns[type_report]
     df = pd.read_excel(base_file, engine='pyxlsb', sheet_name="URT", skiprows=6, index_col=index_col)
@@ -47,7 +47,7 @@ def read_URT(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
-def read_vivienda(info_doc, type_report, name_place) -> dict:
+def read_vivienda(info_doc, type_report, name_place, file) -> dict:
     index_columns = [1,2,11,12]
     index_col = index_columns[type_report]
     df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Vivienda', skiprows=6, index_col=index_col)
@@ -63,7 +63,7 @@ def read_vivienda(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
-def read_alianzas_productivas(info_doc, type_report, name_place) -> dict:
+def read_alianzas_productivas(info_doc, type_report, name_place, file) -> dict:
     index_columns = [1,2,18,19]
     index_col = index_columns[type_report]
     df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Alianzas productivas', skiprows=6, index_col=index_col)
@@ -76,7 +76,7 @@ def read_alianzas_productivas(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
-def read_coseche_y_venda(info_doc, type_report, name_place) -> dict:
+def read_coseche_y_venda(info_doc, type_report, name_place, file) -> dict:
     index_columns = [1,2,6,7]
     index_col = index_columns[type_report]
     df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Coseche y venda a la fija', skiprows=6, index_col=index_col)
@@ -88,7 +88,7 @@ def read_coseche_y_venda(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
-def read_financiamiento(info_doc, type_report, name_place) -> dict:
+def read_financiamiento(info_doc, type_report, name_place, file) -> dict:
     index_columns = [1,2,93,94]
     index_col = index_columns[type_report]
     df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Financiamiento', skiprows=6, index_col=index_col)
@@ -103,7 +103,7 @@ def read_financiamiento(info_doc, type_report, name_place) -> dict:
     return info_doc
 
 
-def read_campo(info_doc, type_report, name_place) -> dict:
+def read_campo(info_doc, type_report, name_place, file) -> dict:
     index_columns = [1,2,14,15]
     index_col = index_columns[type_report]
     df = pd.read_excel(base_file, engine='pyxlsb', sheet_name='Construyendo capacidades', skiprows=6, index_col=index_col)
@@ -129,7 +129,7 @@ def fix_nums(json_nums) -> dict:
 
 
 
-def start_dri(type_report, name_place):
+def start_dri(type_report, name_place, file_Excel):
     logging.basicConfig(
             format='%(asctime)s:%(levelname)s:%(message)s',
             level=logging.INFO,
@@ -137,20 +137,25 @@ def start_dri(type_report, name_place):
                 logging.StreamHandler(sys.stdout)
             ])
     typeR = dri_types[type_report]
-    name_place = int(name_place)
-    name = dri_info[typeR]
-    name = name[name_place]
+    try:
+        name_place = int(name_place)
+        logging.info('Reporte Subregion')
+        name = dri_info[typeR]
+        name = name[name_place]
+    except:
+        name = name_place
+        logging.info('Otro reporte')
     
     info_doc = {}
     
     #index_columns: ['Departamento', 'Municipio', 'Subregión PDET', 'Región']
-    info_doc = read_form_tierras(info_doc, type_report, name_place)
-    info_doc = read_URT(info_doc, type_report, name_place)
-    info_doc = read_vivienda(info_doc, type_report, name_place)
-    info_doc = read_alianzas_productivas(info_doc, type_report, name_place)
-    info_doc = read_coseche_y_venda(info_doc, type_report, name_place)
-    info_doc = read_financiamiento(info_doc, type_report, name_place)
-    info_doc = read_campo(info_doc, type_report, name_place)
+    info_doc = read_form_tierras(info_doc, type_report, name_place, file_Excel)
+    info_doc = read_URT(info_doc, type_report, name_place, file_Excel)
+    info_doc = read_vivienda(info_doc, type_report, name_place, file_Excel)
+    info_doc = read_alianzas_productivas(info_doc, type_report, name_place, file_Excel)
+    info_doc = read_coseche_y_venda(info_doc, type_report, name_place, file_Excel)
+    info_doc = read_financiamiento(info_doc, type_report, name_place, file_Excel)
+    info_doc = read_campo(info_doc, type_report, name_place, file_Excel)
     logging.info('**************')
     info_doc = fix_nums(info_doc)
     

@@ -1,6 +1,6 @@
+import json
+
 dri_info = {
-    "Departamento": {},
-    "Municipio": {},
     "Subregión PDET": {
         1: "Alto Patia - Nore del Cauca",
         2: "Pacifico y Frontera Nariñense",
@@ -19,7 +19,6 @@ dri_info = {
         15: "Macarena - Guaviare",
         16: "Medio Pacifico"
     },
-    "Región":{}
 }
 
 dri_types = {
@@ -28,3 +27,9 @@ dri_types = {
     2: 'Subregión PDET',
     3: 'Región',
 }
+
+dri_departamentos = json.load(open('./fDB/DRI_Departamentos.json'))
+
+dri_regiones = json.load(open('./fDB/DRI_Regiones.json'))
+
+dri_municipios = json.load(open('./fDB/DRI_Municipios.json'))
